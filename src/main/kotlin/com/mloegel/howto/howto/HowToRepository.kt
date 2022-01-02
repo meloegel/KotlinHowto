@@ -6,4 +6,6 @@ import org.springframework.data.repository.CrudRepository
 interface HowToRepository : CrudRepository<HowTo, String>  {
     @Query("select * from howtos")
     fun findHowtos(): List<HowTo>
+
+
 }

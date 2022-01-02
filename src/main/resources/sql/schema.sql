@@ -1,5 +1,6 @@
-CREATE TABLE IF NOT EXISTS howtos (
-id            VARCHAR(60)        DEFAULT RANDOM_UUID() PRIMARY KEY,
+DROP TABLE howtos IF EXISTS;
+CREATE TABLE howtos (
+id            INTEGER            NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name          VARCHAR            NOT NULL,
 description   VARCHAR            NOT NULL,
 category      VARCHAR            NOT NULL,
