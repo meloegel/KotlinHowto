@@ -10,5 +10,4 @@ class HowToService(val db: HowToRepository) {
         db.save(howTo)
     }
 
-    fun findHowtoById(id: Int): HowTo = db.findById(id.toString()).orElseThrow()
 }
