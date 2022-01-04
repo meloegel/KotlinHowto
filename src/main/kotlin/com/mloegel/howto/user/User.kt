@@ -1,10 +1,7 @@
 package com.mloegel.howto.user
 
-import javax.persistence.Id
 import org.springframework.data.relational.core.mapping.Table
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
+import javax.persistence.*
 
 
 @Entity
@@ -12,5 +9,14 @@ import javax.persistence.GenerationType
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val userid:Int?
+    val userid:Int?,
+
+    @Column(nullable = false, unique = true)
+    val username:String,
+
+    @Column(nullable = false, unique = true)
+    val password:String,
+
+    @Column(nullable = false, unique = true)
+    val email:String,
 )
