@@ -1,19 +1,24 @@
 package com.mloegel.howto.howto
 
-import javax.persistence.Id
 import org.springframework.data.relational.core.mapping.Table
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
+import javax.persistence.*
 
 @Entity
 @Table("HOWTOS")
 data class HowTo(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val id:Int?,
+    val howtoid:Int?,
+
+    @Column(nullable = false, unique = true)
     val name:String,
+
+    @Column(nullable = false)
     val description: String,
+
+    @Column(nullable = false)
     val category: String,
+
+    @Column
     val complexity:String
 )
