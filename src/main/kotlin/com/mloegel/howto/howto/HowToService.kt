@@ -1,7 +1,10 @@
 package com.mloegel.howto.howto
 
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Propagation
+import org.springframework.transaction.annotation.Transactional
 
+@Transactional
 @Service
 class HowToService(val db: HowToRepository) {
     fun findHowtos(): MutableIterable<HowTo> = db.findAll()
@@ -10,5 +13,8 @@ class HowToService(val db: HowToRepository) {
         db.save(howTo)
     }
 
-
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    fun deleteAll() {
+        db.deleteAll()
+    }
 }
