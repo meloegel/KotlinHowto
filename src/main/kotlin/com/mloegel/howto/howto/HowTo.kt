@@ -1,5 +1,7 @@
 package com.mloegel.howto.howto
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.mloegel.howto.user.User
 import org.springframework.data.relational.core.mapping.Table
 import javax.persistence.*
 
@@ -20,5 +22,9 @@ data class HowTo(
     val category: String,
 
     @Column
-    val complexity:String
+    val complexity:String,
+
+    @ManyToOne @JoinColumn(name = "userid", nullable = false)
+    @JsonIgnoreProperties(value = ["howTos", "roles", "email"], allowSetters = true)
+    private var user: User? = null
 )
