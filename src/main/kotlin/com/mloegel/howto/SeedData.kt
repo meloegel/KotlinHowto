@@ -12,7 +12,7 @@ import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
-import java.util.*
+import kotlin.collections.HashSet
 
 
 @Transactional
@@ -35,14 +35,21 @@ class SeedData : CommandLineRunner {
     override fun run(args: Array<String?>?) {
         userService?.deleteAll()
         roleService?.deleteAll()
-        var r1 = Role(1, "admin")
-        var r2 = Role(2, "user")
-        var r3 = Role(3, "data")
+        val r1 = Role(1, "admin")
+        val r2 = Role(2, "user")
+        val r3 = Role(3, "data")
         roleService?.postRole(r1)
         roleService?.postRole(r2)
         roleService?.postRole(r3)
 
+//        val set = HashSet<UserRoles>()
+//        set.add(UserRoles(User(1,"admin", "password", "admin@lambdaschool.local"), r1))
+//        set.add(UserRoles(User(1,"admin", "password", "admin@lambdaschool.local"), r2))
+//        set.add(UserRoles(User(1,"admin", "password", "admin@lambdaschool.local"), r3))
 
+        val u1 = User(1,"admin", "password", "admin@lambdaschool.local")
+//        howToService?.postHowto(HowTo(1,"name", "description", "category", "complexity", u1))
+        userService?.postUser(u1)
 //
 //
 //        // admin, data, user
