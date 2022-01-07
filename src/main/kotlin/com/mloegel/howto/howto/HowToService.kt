@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional
 class HowToService(val db: HowToRepository) {
     fun findHowtos(): MutableIterable<HowTo> = db.findAll()
 
+    fun findByHowtoid(howtoid: Int): HowTo = db.findByHowtoid(howtoid)
+
     fun postHowto(howTo: HowTo){
         db.save(howTo)
     }

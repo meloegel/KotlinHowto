@@ -7,6 +7,9 @@ class HowToController(val service: HowToService) {
     @GetMapping("/howtos")
     fun getAllHowtos(): MutableIterable<HowTo> = service.findHowtos()
 
+    @GetMapping("/howto/{howtoid}")
+    fun getHowtoById(@PathVariable howtoid: Int): HowTo = service.findByHowtoid(howtoid)
+
 
     @PostMapping("/howtos")
     fun postHowto(@RequestBody howTo: HowTo) {
