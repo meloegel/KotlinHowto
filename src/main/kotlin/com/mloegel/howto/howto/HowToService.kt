@@ -11,6 +11,8 @@ class HowToService(val db: HowToRepository) {
 
     fun findByHowtoid(howtoid: Int): HowTo = db.findByHowtoid(howtoid)
 
+    fun findHowtosByCategory(category: String): List<HowTo> = db.findHowtosByCategory(category)
+
     fun postHowto(howTo: HowTo){
         db.save(howTo)
     }

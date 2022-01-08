@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository
 
 interface HowToRepository : CrudRepository<HowTo, String>  {
     fun findByHowtoid(howtoid: Int): HowTo
+
+    fun findHowtosByCategory(category: String): List<HowTo>
 }
