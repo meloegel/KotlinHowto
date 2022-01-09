@@ -16,7 +16,6 @@ data class Role (
 
     @OneToMany(mappedBy = "role", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonIgnoreProperties(value = ["role"], allowSetters = true)
-    private var users: Set<UserRoles?>? = HashSet()
-
+    var users: Set<UserRoles?>? = HashSet()
 
         )

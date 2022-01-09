@@ -1,6 +1,7 @@
 package com.mloegel.howto
 
 import com.mloegel.howto.howto.HowTo
+import com.mloegel.howto.howto.HowToRepository
 import com.mloegel.howto.howto.HowToService
 import com.mloegel.howto.role.Role
 import com.mloegel.howto.role.RoleService
@@ -28,6 +29,9 @@ class SeedData : CommandLineRunner {
     @Autowired
     var howToService: HowToService? = null
 
+    @Autowired
+    var howToRepository: HowToRepository? = null
+
 
 
     @Transactional
@@ -48,8 +52,8 @@ class SeedData : CommandLineRunner {
 //        set.add(UserRoles(User(1,"admin", "password", "admin@lambdaschool.local"), r3))
 
         val u1 = User(1,"admin", "password", "admin@lambdaschool.local")
-//        howToService?.postHowto(HowTo(1,"name", "description", "category", "complexity", u1))
         userService?.postUser(u1)
+        howToRepository?.save(HowTo(1,"name", "description", "category", "complexity", User(4,"admin", "password", "admin@lambdaschool.local")))
 //
 //
 //        // admin, data, user
