@@ -25,9 +25,9 @@ data class User(
 
     @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonIgnoreProperties(value = ["user"], allowSetters = true)
-    private var roles: Set<UserRoles?>? = HashSet<UserRoles?>(),
+    var roles: Set<UserRoles?>? = HashSet<UserRoles?>(),
 
     @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonIgnoreProperties(value = ["user"], allowSetters = true)
-    private var howTos: List<HowTo?>? = ArrayList<HowTo?>()
+    var howTos: List<HowTo?>? = ArrayList<HowTo?>()
 )

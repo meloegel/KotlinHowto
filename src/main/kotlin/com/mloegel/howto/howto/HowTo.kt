@@ -26,5 +26,5 @@ data class HowTo(
 
     @ManyToOne @JoinColumn(name = "userid", nullable = false)
     @JsonIgnoreProperties(value = ["howTos", "roles", "email"], allowSetters = true)
-    private var user: User? = null
+    var user: User? = null
 )
