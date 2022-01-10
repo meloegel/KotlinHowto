@@ -1,5 +1,6 @@
 package com.mloegel.howto.user
 
+import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -8,7 +9,13 @@ class UserController(val service: UserService) {
     fun getAllUsers(): MutableIterable<User> = service.findUsers()
 
     @GetMapping("/user/{userid}")
-    fun getUserById(@PathVariable userid: Int): User = service.findByUserid(userid)
+    fun getUserById(@PathVariable userid: Int): User {
+        try {
+            return service.findByUserid(userid)
+        } catch (exception: EmptyResultDataAccessException) {
+            throw Exception("user with id $userid not found!")
+        }
+    }
 
     @PostMapping("/user")
     fun postUser(@RequestBody user: User) {
@@ -21,4 +28,13 @@ class UserController(val service: UserService) {
         service.postUser(updatedUser)
     }
 
+    @DeleteMapping("/user/{userid}")
+    fun deleteUser(@PathVariable userid: Int) {
+        try {
+            val user = service.findByUserid(userid)
+            service.deleteUser(user)
+        } catch (exception: EmptyResultDataAccessException) {
+            throw Exception("user with id $userid not found!")
+        }
+    }
 }
