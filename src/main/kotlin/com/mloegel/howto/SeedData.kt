@@ -46,14 +46,20 @@ class SeedData : CommandLineRunner {
         roleService?.postRole(r2)
         roleService?.postRole(r3)
 
-//        val set = HashSet<UserRoles>()
-//        set.add(UserRoles(User(1,"admin", "password", "admin@lambdaschool.local"), r1))
-//        set.add(UserRoles(User(1,"admin", "password", "admin@lambdaschool.local"), r2))
-//        set.add(UserRoles(User(1,"admin", "password", "admin@lambdaschool.local"), r3))
+
 
         val u1 = User(1,"admin", "password", "admin@lambdaschool.local")
         userService?.postUser(u1)
         howToRepository?.save(HowTo(1,"name", "description", "category", "complexity", User(4,"admin", "password", "admin@lambdaschool.local")))
+
+//        val set = HashSet<UserRoles>()
+//        set.add(UserRoles(u1, r1))
+//        set.add(UserRoles(u1, r2))
+//        set.add(UserRoles(u1, r3))
+//        u1.roles = set
+//        userService?.postUser(u1)
+
+
 //
 //
 //        // admin, data, user

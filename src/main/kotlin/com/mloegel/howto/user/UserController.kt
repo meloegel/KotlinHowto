@@ -14,4 +14,11 @@ class UserController(val service: UserService) {
     fun postUser(@RequestBody user: User) {
         service.postUser(user)
     }
+
+    @PutMapping("/user/{userid}")
+    fun updateUser(@PathVariable userid: Int, @RequestBody updatedUser: User) {
+        updatedUser.userid = userid
+        service.postUser(updatedUser)
+    }
+
 }

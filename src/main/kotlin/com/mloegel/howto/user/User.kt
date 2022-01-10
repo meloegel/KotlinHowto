@@ -12,16 +12,16 @@ import javax.persistence.*
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val userid:Int?,
+    var userid:Int?,
 
     @Column(nullable = false, unique = true)
-    val username:String,
+    var username:String,
 
     @Column(nullable = false, unique = true)
-    val password:String,
+    var password:String,
 
     @Column(nullable = false, unique = true)
-    val email:String,
+    var email:String,
 
     @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonIgnoreProperties(value = ["user"], allowSetters = true)

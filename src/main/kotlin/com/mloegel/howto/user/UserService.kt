@@ -11,6 +11,7 @@ class UserService(val db: UserRepository) {
 
     fun findByUserid(userid: Int): User = db.findByUserid(userid)
 
+    @Transactional
     fun postUser(user: User) {
         db.save(user)
     }
