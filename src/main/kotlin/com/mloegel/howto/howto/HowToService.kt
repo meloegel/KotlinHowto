@@ -16,6 +16,8 @@ class HowToService(val db: HowToRepository) {
 
     fun findHowtosByUser(user: User): List<HowTo> = db.findHowtosByUser(user)
 
+    fun findHowtoByName(name: String): HowTo = db.findHowtoByName(name)
+
     fun postHowto(user: User ,howTo: HowTo){
         howTo.user = user
         db.save(howTo)

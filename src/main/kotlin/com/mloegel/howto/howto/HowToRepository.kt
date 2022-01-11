@@ -10,4 +10,6 @@ interface HowToRepository : CrudRepository<HowTo, String>  {
     fun findHowtosByUser(user: User): List<HowTo>
 
     fun findHowtosByCategory(category: String): List<HowTo>
+
+    fun findHowtoByName(name: String): HowTo
 }
