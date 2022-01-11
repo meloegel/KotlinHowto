@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional
 class RoleService(val db: RoleRepository) {
     fun findAllRoles() : MutableIterable<Role> = db.findAll()
 
+    fun findByRoleid(roleid: Int): Role = db.findByRoleid(roleid)
+
     fun postRole(role: Role) {
         db.save(role)
     }
