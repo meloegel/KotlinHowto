@@ -20,6 +20,9 @@ class HowToController(val service: HowToService, val userService: UserService) {
         return service.findHowtosByUser(user)
     }
 
+    @GetMapping("/howtos/howto/{name}")
+    fun getHowtoByName(@PathVariable name: String): HowTo = service.findHowtoByName(name)
+
     @PostMapping("/{userid}/howtos")
     fun postHowto(@PathVariable userid: Int, @RequestBody howTo: HowTo) {
         val user = userService.findByUserid(userid)
