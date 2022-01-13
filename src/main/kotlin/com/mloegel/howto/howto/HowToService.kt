@@ -18,12 +18,17 @@ class HowToService(val db: HowToRepository) {
 
     fun findHowtoByName(name: String): HowTo = db.findHowtoByName(name)
 
+    fun findHowtoByNameContaining(name: String): List<HowTo> = db.findHowtosByNameContainingIgnoreCase(name)
+
+    @Transactional
     fun postHowto(user: User ,howTo: HowTo){
         howTo.user = user
         db.save(howTo)
     }
 
+    @Transactional
+    fun deleteHowto(howTo: HowTo) = db.delete(howTo)
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun deleteAll() = db.deleteAll()
-
 }
