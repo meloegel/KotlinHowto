@@ -17,6 +17,12 @@ class UserController(val service: UserService) {
         }
     }
 
+    @GetMapping("/users/{username}/user")
+    fun getUserByUsername(@PathVariable username: String) = service.findByUsername(username)
+
+    @GetMapping("/users/user/{username}")
+    fun findUsername(@PathVariable username: String) = service.findByName(username)
+
     @PostMapping("/user")
     fun postUser(@RequestBody user: User) {
         service.postUser(user)
