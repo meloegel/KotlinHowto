@@ -24,7 +24,6 @@ class HowToService(val db: HowToRepository) {
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    fun deleteAll() {
-        db.deleteAll()
-    }
+    fun deleteAll() = db.deleteAll()
+
 }
