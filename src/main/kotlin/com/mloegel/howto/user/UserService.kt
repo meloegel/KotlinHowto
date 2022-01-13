@@ -11,6 +11,10 @@ class UserService(val db: UserRepository) {
 
     fun findByUserid(userid: Int): User = db.findByUserid(userid)
 
+    fun findByUsername(username: String): User = db.findByUsername(username)
+
+    fun findByName(username: String): List<User> = db.findByUsernameContainingIgnoreCase(username)
+
     @Transactional
     fun postUser(user: User) = db.save(user)
 
@@ -19,5 +23,4 @@ class UserService(val db: UserRepository) {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun deleteAll() = db.deleteAll()
-
   }
