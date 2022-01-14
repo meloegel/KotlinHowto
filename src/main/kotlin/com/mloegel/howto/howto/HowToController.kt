@@ -49,4 +49,15 @@ class HowToController(val service: HowToService, val userService: UserService) {
         val user = userService.findByUserid(userid)
         service.postHowto(user, howTo)
     }
+
+    @DeleteMapping("/howto/{howtoid}")
+    fun deleteHowto(@PathVariable howtoid: Int) {
+        try {
+            val howto = service.findByHowtoid(howtoid)
+            service.deleteHowto(howto)
+        } catch (exception: EmptyResultDataAccessException){
+            throw Exception("Howto with id $howtoid not found!")
+        }
+
+    }
 }
