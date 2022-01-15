@@ -51,11 +51,15 @@ class SeedData : CommandLineRunner {
 
         val u4 = User(7, "puttat", "password", "puttat@school.lambda")
         userService?.postUser(u4)
+        howToRepository?.save(
+            HowTo(8,"fart name", "description", "category", "complexity",
+                User(7,"admin", "password", "admin@lambdaschool.local")))
 
-        val u5 = User( 8, "misskitty", "password", "misskitty@school.lambda")
+
+        val u5 = User( 9, "misskitty", "password", "misskitty@school.lambda")
         userService?.postUser(u5)
 
-        val u6 = User(9,"fart", "password", "email@email.com")
+        val u6 = User(10,"fart", "password", "email@email.com")
         userService?.postUser(u6)
     }
 }
