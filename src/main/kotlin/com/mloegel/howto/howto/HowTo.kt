@@ -1,6 +1,7 @@
 package com.mloegel.howto.howto
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.mloegel.howto.steps.Step
 import com.mloegel.howto.user.User
 import org.springframework.data.relational.core.mapping.Table
 import javax.persistence.*
@@ -26,5 +27,9 @@ data class HowTo(
 
     @ManyToOne @JoinColumn(name = "userid", nullable = false)
     @JsonIgnoreProperties(value = ["howTos", "roles", "email"], allowSetters = true)
-    var user: User? = null
+    var user: User? = null,
+
+    @OneToMany(mappedBy = "stepid", cascade = [javax.persistence.CascadeType.ALL], orphanRemoval = true)
+    @JsonIgnoreProperties(value = ["howtoid"], allowSetters = true)
+    private val steps: List<Step> = ArrayList<Step>()
 )
