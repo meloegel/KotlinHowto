@@ -17,5 +17,5 @@ data class Step(
     @ManyToOne
     @JoinColumn(name = "howtoid", nullable = false)
     @JsonIgnoreProperties(value = ["steps", "user", "complexity", "category", "description"], allowSetters = true)
-    private var howto: HowTo? = null
+    var howto: HowTo? = null
 )
