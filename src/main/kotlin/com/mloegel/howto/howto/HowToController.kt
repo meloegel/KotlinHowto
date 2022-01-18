@@ -58,6 +58,5 @@ class HowToController(val service: HowToService, val userService: UserService) {
         } catch (exception: EmptyResultDataAccessException){
             throw Exception("Howto with id $howtoid not found!")
         }
-
     }
 }

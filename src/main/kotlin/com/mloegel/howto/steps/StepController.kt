@@ -2,9 +2,7 @@ package com.mloegel.howto.steps
 
 import com.mloegel.howto.howto.HowToService
 import org.springframework.dao.EmptyResultDataAccessException
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 
 @RestController
@@ -28,6 +26,22 @@ class StepController(val service: StepService, val howToService: HowToService) {
             return service.findAllStepsForHowto(howto)
         }catch (exception: EmptyResultDataAccessException) {
             throw Exception("Howto with id $howtoid not found!")
+        }
+    }
+
+    @PostMapping("/{howtoid}/step")
+    fun postStep(@PathVariable howtoid: Int, @RequestBody step: Step) {
+        val howto = howToService.findByHowtoid(howtoid)
+        service.postStep(howto, step)
+    }
+
+    @DeleteMapping("/step/{stepid}")
+    fun deleteStep(@PathVariable stepid: Int) {
+        try {
+            val step = service.findStepById(stepid)
+            service.deleteStep(step)
+        }catch (exception: EmptyResultDataAccessException) {
+            throw Exception("Step with id $stepid not found!")
         }
     }
 }
