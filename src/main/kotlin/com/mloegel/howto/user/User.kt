@@ -24,5 +24,5 @@ data class User(
 
     @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonIgnoreProperties(value = ["user"], allowSetters = true)
-    var howTos: List<HowTo?>? = ArrayList<HowTo?>()
+    var howTos: List<HowTo> = ArrayList<HowTo>()
 )

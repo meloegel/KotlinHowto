@@ -25,11 +25,12 @@ data class HowTo(
     @Column
     val complexity:String,
 
-    @ManyToOne @JoinColumn(name = "userid", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "userid", nullable = false)
     @JsonIgnoreProperties(value = ["howTos", "roles", "email"], allowSetters = true)
     var user: User? = null,
 
-    @OneToMany(mappedBy = "stepid", cascade = [javax.persistence.CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "stepid", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonIgnoreProperties(value = ["howtoid"], allowSetters = true)
-    private val steps: List<Step> = ArrayList<Step>()
+    val steps: List<Step> = ArrayList<Step>()
 )
