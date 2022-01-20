@@ -30,7 +30,7 @@ data class HowTo(
     @JsonIgnoreProperties(value = ["howTos", "roles", "email"], allowSetters = true)
     var user: User? = null,
 
-    @OneToMany(mappedBy = "stepid", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "howto", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonIgnoreProperties(value = ["howtoid"], allowSetters = true)
     val steps: List<Step> = ArrayList<Step>()
 )
