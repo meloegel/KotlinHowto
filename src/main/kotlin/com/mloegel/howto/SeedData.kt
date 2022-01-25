@@ -39,33 +39,51 @@ class SeedData : CommandLineRunner {
         stepRepository?.save(
             Step( 3,"step1",
                 HowTo(2,"name", "description", "category", "complexity")))
+        stepRepository?.save(
+            Step( 4,"step2",
+                HowTo(2,"name", "description", "category", "complexity")))
+        stepRepository?.save(
+            Step( 5,"step3",
+                HowTo(2,"name", "description", "category", "complexity")))
 
-
-        val u2 = User(4, "cinnamon", "1234567", "cinnamon@lambdaschool.local")
+        val u2 = User(6, "cinnamon", "1234567", "cinnamon@lambdaschool.local")
         userService?.postUser(u2)
         howToRepository?.save(
-            HowTo(5,"name two", "description", "category", "complexity",
-                User(4, "cinnamon", "1234567", "cinnamon@lambdaschool.local")))
+            HowTo(7,"name two", "description", "category", "complexity",
+                User(6, "cinnamon", "1234567", "cinnamon@lambdaschool.local")))
+        stepRepository?.save(
+            Step( 8,"step4",
+                HowTo(7,"name", "description", "category", "complexity")))
+        stepRepository?.save(
+            Step( 9,"step5",
+                HowTo(7,"name", "description", "category", "complexity")))
 
-
-        val u3 = User(6, "barnbarn", "ILuvM4th!", "barnbarn@lambdaschool.local")
+        val u3 = User(10, "barnbarn", "ILuvM4th!", "barnbarn@lambdaschool.local")
         userService?.postUser(u3)
         howToRepository?.save(
-            HowTo(7,"name three test", "description", "category", "complexity",
-                User(6, "barnbarn", "ILuvM4th!", "barnbarn@lambdaschool.local")))
+            HowTo(11,"name three test", "description", "category", "complexity",
+                User(10, "barnbarn", "ILuvM4th!", "barnbarn@lambdaschool.local")))
+        stepRepository?.save(
+            Step( 12,"step3",
+                HowTo(11,"name", "description", "category", "complexity")))
+        stepRepository?.save(
+            Step( 13,"step3",
+                HowTo(11,"name", "description", "category", "complexity")))
+        stepRepository?.save(
+            Step( 14,"step3",
+                HowTo(11,"name", "description", "category", "complexity")))
 
-
-        val u4 = User(8, "puttat", "password", "puttat@school.lambda")
+        val u4 = User(15, "puttat", "password", "puttat@school.lambda")
         userService?.postUser(u4)
         howToRepository?.save(
-            HowTo(9,"fart name", "description", "category", "complexity",
-                User(8,"admin", "password", "admin@lambdaschool.local")))
+            HowTo(16,"fart name", "description", "category", "complexity",
+                User(15,"admin", "password", "admin@lambdaschool.local")))
 
 
-        val u5 = User( 10, "misskitty", "password", "misskitty@school.lambda")
+        val u5 = User( 17, "misskitty", "password", "misskitty@school.lambda")
         userService?.postUser(u5)
 
-        val u6 = User(11,"fart", "password", "email@email.com")
+        val u6 = User(18,"fart", "password", "email@email.com")
         userService?.postUser(u6)
     }
 }
