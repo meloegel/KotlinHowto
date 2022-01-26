@@ -20,6 +20,8 @@ class HowToService(val db: HowToRepository) {
 
     fun findHowtoByNameContaining(name: String): List<HowTo> = db.findHowtosByNameContainingIgnoreCase(name)
 
+    fun findHowtoByComplexity(complexity: String): List<HowTo> = db.findHowtosByComplexity(complexity)
+
     @Transactional
     fun postHowto(user: User ,howTo: HowTo){
         howTo.user = user

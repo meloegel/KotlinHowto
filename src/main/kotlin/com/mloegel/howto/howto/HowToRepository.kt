@@ -13,4 +13,6 @@ interface HowToRepository : CrudRepository<HowTo, String>  {
     fun findHowtoByName(name: String): HowTo
 
     fun findHowtosByNameContainingIgnoreCase(name: String): List<HowTo>
+
+    fun findHowtosByComplexity(complexity: String): List<HowTo>
 }
