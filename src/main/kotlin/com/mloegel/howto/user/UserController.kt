@@ -18,12 +18,17 @@ class UserController(val service: UserService) {
     }
 
     @GetMapping("/users/{username}/user")
-    fun getUserByUsername(@PathVariable username: String): User {
+    fun getUserByUsername( username: String): User {
         try {
             return service.findByUsername(username)
         } catch (exception: EmptyResultDataAccessException) {
             throw Exception("user with username $username not found!")
         }
+    }
+
+    @GetMapping("/login")
+    fun login(@RequestBody loginInfo: Login) : String {
+        return service.login(loginInfo.username, loginInfo.password)
     }
 
     @GetMapping("/users/user/{username}")
@@ -50,3 +55,8 @@ class UserController(val service: UserService) {
         }
     }
 }
+
+data class Login(
+    val username: String,
+    val password: String
+)
