@@ -1,8 +1,8 @@
 package com.mloegel.howto.user
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.mloegel.howto.howto.HowTo
 import org.springframework.data.relational.core.mapping.Table
+import com.mloegel.howto.howto.HowTo
 import javax.persistence.*
 
 
